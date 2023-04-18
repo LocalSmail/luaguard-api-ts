@@ -1,0 +1,24 @@
+{
+  "name": "luaguard-api-ts",
+  "version": "1.0.0",
+  "description": "The unoffical package for the luaguard api built in typescript allowing for more flexibilty when using the API.\n\nBuy luaguard here: \u0016https://luawl.com",
+  "main": "index.ts",
+  "scripts": {
+    "test": "node test.ts"
+  },
+  "keywords": [
+    "luaguard",
+    "luaguard api",
+    "api",
+    "ts",
+    "luagaurd ts",
+    "axios"
+  ],
+  "homepage": "https://github.com/LocalSmail/luaguard-api-ts",
+  "funding": {"type": "kofi", "url": "https://ko-fi.com/localsmail"},
+  "author": "@antwannn",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.3.3"
+  }
+}
