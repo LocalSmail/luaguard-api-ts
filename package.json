@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "The unoffical package for the luaguard api built in typescript allowing for more flexibilty when using the API.\n\nBuy luaguard here: \u0016https://luawl.com",
   "main": "index.ts",
-  "scripts": {
-    "test": "node test.ts"
-  },
   "keywords": [
     "luaguard",
     "luaguard api",
