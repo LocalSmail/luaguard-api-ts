@@ -1,4 +1,7 @@
 ### Luaguard API
+
+[You can get the package here!](https://www.npmjs.com/package/luaguard-api-ts)
+
 Welcome to the Luaguard API.
 
 Here you can interact with the Luaguard API without needing to handle the requests your self.
