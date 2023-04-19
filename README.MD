@@ -6,11 +6,8 @@ Here you can interact with the Luaguard API without needing to handle the reques
 ---
 
 <b>Please note that you need to own Luaguard Tier 2 to use the api!</b><br>
-
----
-
-#### We do not support javascript.
 <a href="https://luawl.com" style="font-weight: bolder">If you dont own Luaguard or Tier 2 then click me to buy!</a>
+
 
 # Getting started
 
