@@ -1,0 +1,20 @@
+[book]
+authors = ["Antwan"]
+language = "en"
+multilingual = false
+src = "src"
+title = "LG Api TypeScript"
+
+[output.html]
+default-theme = "dark"
+preferred-dark-theme = "ayu"
+no-section-label = true
+site-url = "/"
+cname = ""
+
+[output.html.print]
+enable = false
+
+[output.html.fold]
+enable = true
+level = 0
