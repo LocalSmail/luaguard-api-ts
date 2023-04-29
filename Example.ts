@@ -1,12 +1,16 @@
-// The example on how to use the luaguard api which is shown inside the README.MD
-import { luaguardAPI } from "luaguard-api-ts"; // imports
+import { luaguardAPI } from "./index"; // imports
 
-const api = new luaguardAPI(); // creates a new luaguardAPI class instance
+// IF there is no token set here and non defined inside the 'token' argument for whatever function your using it will print an error and return nothing.
+const api = new luaguardAPI('<TOKEN>'); // <OPTIONAL> Sets Api token to the class so no need to constntly define.
 
-async function t() {
-    const res = await api.GetAccountStats({ token: "<YOURAPITOKENHERE>" }) // sends request
-
-    console.log(JSON.stringify(await res?.data)) // print data returned
+async function FindKey() {
+    // sends request
+    await api.GetAccountStats({}).catch((err) => {
+        console.log("EEEEE", err)
+    })
+    .then((data) => {
+        console.log(data)
+    })
 }
 
-t() // runs function
+FindKey()
