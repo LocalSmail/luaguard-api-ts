@@ -34,7 +34,7 @@ Here I will show an example on how to send a request for your account stats.
 <i>Please keep in mind that the `token` will always be your api token. <b>DO NOT SHARE THIS WITH ANYONE</b></i>
 <br>
 ```typescript
-// Fun fact: You dont need to do try catch because its dont automatically when you execute a function.
+// Fun fact: You dont need to do try catch because its done automatically when you execute a function.
 /* 
 The code may differ depending on your tsconfig.json
 Import the luaguardAPI class from the luaguard-api-ts module.
