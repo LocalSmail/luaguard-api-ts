@@ -34,7 +34,6 @@ Here I will show an example on how to send a request for your account stats.
 <i>Please keep in mind that the `token` will always be your api token. <b>DO NOT SHARE THIS WITH ANYONE</b></i>
 <br>
 ```typescript
-// Fun fact: You dont need to do try catch because its done automatically when you execute a function.
 /* 
 The code may differ depending on your tsconfig.json
 Import the luaguardAPI class from the luaguard-api-ts module.
@@ -46,7 +45,11 @@ import { luaguardAPI } from "luaguard-api-ts"; // imports
 // IF there is no token set here and non defined inside the 'token' argument for whatever function your using it will print an error and return nothing.
 const api = new luaguardAPI('<TOKEN>'); // <OPTIONAL> Sets Api token to the class so no need to constntly define.
 
-async function FindKey() {
+//
+// NO NEED FOR try{} catch() BECAUSE WE DO IT FOR YOU!
+//
+
+async function GetData() {
     // sends request
     await api.GetAccountStats({}).catch((err) => {
         console.log("Error", err)
@@ -56,11 +59,9 @@ async function FindKey() {
     })
 }
 
-FindKey()
+GetData()
+
 ```
 
 ### Todo
-
-Add Blacklisted Enpoints
-Add updateKeyWLScript, bulkUpdateKeyWLScript, addKeyTags Endpoints
-Be more transparent on data that is returned in jsdoc
+--Be more transparent on data that is returned in jsdoc
