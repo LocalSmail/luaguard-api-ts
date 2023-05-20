@@ -6,7 +6,7 @@ import axios from 'axios'
 
 /**
  * @description The Class for the luaguardAPI and all request functions.
- * @author Antwan#5152 (Discord) | LocalSmail (Github) | antwannn (Npm)
+ * @author Antwan#5152 (Discord) | LocalSmail (Github) | antwann (Npm)
 */
 class luaguardAPI {
 
@@ -837,6 +837,386 @@ class luaguardAPI {
             }
 
         })
+
+    }
+
+    /**
+     * @description Update all keys from one script id to another
+     * @param {number} body.OldScriptID - Old Script ID
+     * @param {number} body.NewScriptID - New Script ID
+     * @returns {object} - Returns Data from the API.
+     */
+
+    BulkUpdateKeyWLScript = async function (body: { token?: string; OldScriptID: number; NewScriptID: number; }): Promise<Object> {
+        return await new Promise<Object>((resolve, reject) => {
+            if (!body) {
+                console.error("MISSING BODY FOR BulkUpdateKeyWLScript")
+                reject({ "Error": 'Insert a body ( {} ).' })
+            }
+
+            if (!body.OldScriptID) {
+                console.error("MISSING KEY FOR BulkUpdateKeyWLScript")
+                reject({ "Error": 'Insert a OldScriptID.' })
+
+            }
+
+            if (!body.NewScriptID) {
+                console.error("MISSING KEY FOR BulkUpdateKeyWLScript")
+                reject({ "Error": 'Insert a NewScriptID.' })
+            }
+
+            if (!body.token && !luaguardAPI.TokenInputted) {
+                console.error("MISSING TOKEN FOR BulkUpdateKeyWLScript")
+                reject({ "Error": 'Insert a token.' })
+            }
+
+            try {
+
+                axios.request({
+                    url: 'https://api.luawl.com/bulkUpdateKeyWLScript.php',
+                    headers: { 'Content-Type': 'application/json' },
+                    method: "POST",
+                    data: {
+                        token: body.token || luaguardAPI.TokenInputted,
+                        old_wl_script_id: body.OldScriptID,
+                        new_wl_script_id: body.NewScriptID
+                    }
+                })
+
+                    .then(function (data) {
+                        resolve(data.data)
+                    })
+                    .catch(function (error) {
+                        if (error.response) {
+                            // The request was made and the server responded with a status code
+                            // that falls out of the range of 2xx
+                            console.log('! ERROR !')
+                            console.log(error.response.data);
+                            console.log(error.response.status);
+                            console.log(error.response.headers);
+                            reject({ "Error": `Server Responded with Status Code: ${error.respond.status}\nWe recommend you check your data or if the services are up.`, "Data": `${JSON.stringify(error.response.data)}`})
+                        } else if (error.request) {
+                            // The request was made but no response was received
+                            // `error.request` is an instance of XMLHttpRequest in the browser and an instance ofofof
+                            // http.ClientRequest in node.js
+                            console.log('! ERROR !')
+                            console.log(error.request);
+                            reject({ 'Error': 'Data was sent but server did not respond.' })
+                        } else {
+                            // Something happened in setting up the request that triggered an Error
+                            console.log('! ERROR !')
+                            console.log(error.message);
+                        }
+                        console.log(error.config);
+                    })
+
+            } catch (err) {
+                console.error("err", err)
+                reject({ "Error": "Some un-accounted for issue occured. Printed to console." })
+            }
+        }) // eol Promise
+
+    }
+
+    /**
+     * @description Update a singular key to a new script id.
+     * @param {string} body.key - The key to be gotten. 
+     * @param {string} body.token - The token for authorization.
+     * @param {number} body.wl_script_id - The new script ID.
+     * @returns {object} - Returns Data from the API.
+     */
+
+    UpdateKeyWLScript  = async function (body: { token?: string; key: string; wl_script_id: number; }): Promise<Object> {
+        return await new Promise<Object>((resolve, reject) => {
+            if (!body) {
+                console.error("MISSING BODY FOR UpdateKeyWLScript")
+                reject({ "Error": 'Insert a body ( {} ).' })
+            }
+
+            if (!body.key) {
+                console.error("MISSING KEY FOR UpdateKeyWLScript")
+                reject({ "Error": 'Insert a key.' })
+
+            }
+
+            if (!body.token && !luaguardAPI.TokenInputted) {
+                console.error("MISSING TOKEN FOR UpdateKeyWLScript")
+                reject({ "Error": 'Insert a token.' })
+            }
+
+            if (!body.wl_script_id) {
+                console.error("MISSING TOKEN FOR UpdateKeyWLScript")
+                reject({ "Error": 'Insert a script id.' })
+            }
+
+            try {
+
+                axios.request({
+                    url: 'https://api.luawl.com/updateKeyWLScript.php',
+                    headers: { 'Content-Type': 'application/json' },
+                    method: "POST",
+                    data: {
+                        token: body.token || luaguardAPI.TokenInputted,
+                        key: body.key,
+                        wl_script_id: body.wl_script_id
+                    }
+                })
+
+                    .then(function (data) {
+                        resolve(data.data)
+                    })
+                    .catch(function (error) {
+                        if (error.response) {
+                            // The request was made and the server responded with a status code
+                            // that falls out of the range of 2xx
+                            console.log('! ERROR !')
+                            console.log(error.response.data);
+                            console.log(error.response.status);
+                            console.log(error.response.headers);
+                            reject({ "Error": `Server Responded with Status Code: ${error.respond.status}\nWe recommend you check your data or if the services are up.`, "Data": `${JSON.stringify(error.response.data)}`})
+                        } else if (error.request) {
+                            // The request was made but no response was received
+                            // `error.request` is an instance of XMLHttpRequest in the browser and an instance ofofof
+                            // http.ClientRequest in node.js
+                            console.log('! ERROR !')
+                            console.log(error.request);
+                            reject({ 'Error': 'Data was sent but server did not respond.' })
+                        } else {
+                            // Something happened in setting up the request that triggered an Error
+                            console.log('! ERROR !')
+                            console.log(error.message);
+                        }
+                        console.log(error.config);
+                    })
+
+            } catch (err) {
+                console.error("err", err)
+                reject({ "Error": "Some un-accounted for issue occured. Printed to console." })
+            }
+        }) // eol Promise
+
+    }
+
+    /**
+     * @description Add keytags to the users key for identifiers.
+     * @param {string} body.key - The key to be gotten. 
+     * @param {string} body.token - The token for authorization.
+     * @param {Array} body.tags - The new tags.
+     * @returns {object} - Returns Data from the API.
+     */
+
+    AddKeyTags = async function (body: { token?: string; key: string; tags: []; }): Promise<Object> {
+        return await new Promise<Object>((resolve, reject) => {
+            if (!body) {
+                console.error("MISSING BODY FOR AddKeyTags")
+                reject({ "Error": 'Insert a body ( {} ).' })
+            }
+
+            if (!body.key) {
+                console.error("MISSING KEY FOR AddKeyTags")
+                reject({ "Error": 'Insert a key.' })
+
+            }
+
+            if (!body.token && !luaguardAPI.TokenInputted) {
+                console.error("MISSING TOKEN FOR AddKeyTags")
+                reject({ "Error": 'Insert a token.' })
+            }
+
+            if (!body.tags) {
+                console.error("MISSING TAGS FOR AddKeyTags")
+                reject({ "Error": 'Insert a tags array.' })
+            }
+
+            try {
+
+                axios.request({
+                    url: 'https://api.luawl.com/addKeyTags.php',
+                    headers: { 'Content-Type': 'application/json' },
+                    method: "POST",
+                    data: {
+                        token: body.token || luaguardAPI.TokenInputted,
+                        key: body.key,
+                        tags: body.tags
+                    }
+                })
+
+                    .then(function (data) {
+                        resolve(data.data)
+                    })
+                    .catch(function (error) {
+                        if (error.response) {
+                            // The request was made and the server responded with a status code
+                            // that falls out of the range of 2xx
+                            console.log('! ERROR !')
+                            console.log(error.response.data);
+                            console.log(error.response.status);
+                            console.log(error.response.headers);
+                            reject({ "Error": `Server Responded with Status Code: ${error.respond.status}\nWe recommend you check your data or if the services are up.`, "Data": `${JSON.stringify(error.response.data)}`})
+                        } else if (error.request) {
+                            // The request was made but no response was received
+                            // `error.request` is an instance of XMLHttpRequest in the browser and an instance ofofof
+                            // http.ClientRequest in node.js
+                            console.log('! ERROR !')
+                            console.log(error.request);
+                            reject({ 'Error': 'Data was sent but server did not respond.' })
+                        } else {
+                            // Something happened in setting up the request that triggered an Error
+                            console.log('! ERROR !')
+                            console.log(error.message);
+                        }
+                        console.log(error.config);
+                    })
+
+            } catch (err) {
+                console.error("err", err)
+                reject({ "Error": "Some un-accounted for issue occured. Printed to console." })
+            }
+        }) // eol Promise
+
+    }
+
+    /**
+     * @description Remove a blacklist from a key, this will not remove global blacklists
+     * @param {string} body.key - The key to be gotten. 
+     * @param {string} body.token - The token for authorization.
+     * @returns {object} - Returns Data from the API.
+     */
+
+    RemoveBlacklist = async function (body: { token?: string; key: string; }): Promise<Object> {
+        return await new Promise<Object>((resolve, reject) => {
+            if (!body) {
+                console.error("MISSING BODY FOR RemoveBlacklist")
+                reject({ "Error": 'Insert a body ( {} ).' })
+            }
+
+            if (!body.key) {
+                console.error("MISSING KEY FOR RemoveBlacklist")
+                reject({ "Error": 'Insert a key.' })
+
+            }
+
+            if (!body.token && !luaguardAPI.TokenInputted) {
+                console.error("MISSING TOKEN FOR RemoveBlacklist")
+                reject({ "Error": 'Insert a token.' })
+            }
+
+            try {
+
+                axios.request({
+                    url: 'https://api.luawl.com/removeBlacklist.php',
+                    headers: { 'Content-Type': 'application/json' },
+                    method: "POST",
+                    data: {
+                        token: body.token || luaguardAPI.TokenInputted,
+                        key: body.key,
+                    }
+                })
+
+                    .then(function (data) {
+                        resolve(data.data)
+                    })
+                    .catch(function (error) {
+                        if (error.response) {
+                            // The request was made and the server responded with a status code
+                            // that falls out of the range of 2xx
+                            console.log('! ERROR !')
+                            console.log(error.response.data);
+                            console.log(error.response.status);
+                            console.log(error.response.headers);
+                            reject({ "Error": `Server Responded with Status Code: ${error.respond.status}\nWe recommend you check your data or if the services are up.`, "Data": `${JSON.stringify(error.response.data)}`})
+                        } else if (error.request) {
+                            // The request was made but no response was received
+                            // `error.request` is an instance of XMLHttpRequest in the browser and an instance ofofof
+                            // http.ClientRequest in node.js
+                            console.log('! ERROR !')
+                            console.log(error.request);
+                            reject({ 'Error': 'Data was sent but server did not respond.' })
+                        } else {
+                            // Something happened in setting up the request that triggered an Error
+                            console.log('! ERROR !')
+                            console.log(error.message);
+                        }
+                        console.log(error.config);
+                    })
+
+            } catch (err) {
+                console.error("err", err)
+                reject({ "Error": "Some un-accounted for issue occured. Printed to console." })
+            }
+        }) // eol Promise
+
+    }
+
+    /**
+     * @description Blacklist a key from your script
+     * @param {string} body.key - The key to be gotten. 
+     * @param {string} body.token - The token for authorization.
+     * @returns {object} - Returns Data from the API.
+     */
+
+    CreateBlacklist = async function (body: { token?: string; key: string; }): Promise<Object> {
+        return await new Promise<Object>((resolve, reject) => {
+            if (!body) {
+                console.error("MISSING BODY FOR CreateBlacklist")
+                reject({ "Error": 'Insert a body ( {} ).' })
+            }
+
+            if (!body.key) {
+                console.error("MISSING KEY FOR CreateBlacklist")
+                reject({ "Error": 'Insert a key.' })
+
+            }
+
+            if (!body.token && !luaguardAPI.TokenInputted) {
+                console.error("MISSING TOKEN FOR CreateBlacklist")
+                reject({ "Error": 'Insert a token.' })
+            }
+
+            try {
+
+                axios.request({
+                    url: 'https://api.luawl.com/createBlacklist.php',
+                    headers: { 'Content-Type': 'application/json' },
+                    method: "POST",
+                    data: {
+                        token: body.token || luaguardAPI.TokenInputted,
+                        key: body.key,
+                    }
+                })
+
+                    .then(function (data) {
+                        resolve(data.data)
+                    })
+                    .catch(function (error) {
+                        if (error.response) {
+                            // The request was made and the server responded with a status code
+                            // that falls out of the range of 2xx
+                            console.log('! ERROR !')
+                            console.log(error.response.data);
+                            console.log(error.response.status);
+                            console.log(error.response.headers);
+                            reject({ "Error": `Server Responded with Status Code: ${error.respond.status}\nWe recommend you check your data or if the services are up.`, "Data": `${JSON.stringify(error.response.data)}`})
+                        } else if (error.request) {
+                            // The request was made but no response was received
+                            // `error.request` is an instance of XMLHttpRequest in the browser and an instance ofofof
+                            // http.ClientRequest in node.js
+                            console.log('! ERROR !')
+                            console.log(error.request);
+                            reject({ 'Error': 'Data was sent but server did not respond.' })
+                        } else {
+                            // Something happened in setting up the request that triggered an Error
+                            console.log('! ERROR !')
+                            console.log(error.message);
+                        }
+                        console.log(error.config);
+                    })
+
+            } catch (err) {
+                console.error("err", err)
+                reject({ "Error": "Some un-accounted for issue occured. Printed to console." })
+            }
+        }) // eol Promise
 
     }
 
