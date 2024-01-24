@@ -1,3 +1,7 @@
+# Archieved
+This package will no longer recieve updates.
+
+
 ### Luaguard API
 
 [You can get the package here!](https://www.npmjs.com/package/luaguard-api-ts)
